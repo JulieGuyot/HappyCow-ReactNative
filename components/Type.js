@@ -287,6 +287,30 @@ const Type = ({ category }) => {
           <Text style={styles.option}>{"Bar à jus"}</Text>
         </View>
       )}
+
+      {category === 14 && (
+        <View style={styles.category}>
+          <Entypo
+            style={{
+              width: 50,
+              height: 50,
+              textAlign: "center",
+              padding: 10,
+              borderRadius: 25,
+              borderWidth: 2,
+              borderColor: "white",
+              backgroundColor: "#3775C5",
+              overflow: "hidden",
+              left: 25,
+              marginBottom: 10,
+            }}
+            name="leaf"
+            size={24}
+            color="white"
+          />
+          <Text style={styles.option}>{"Autres"}</Text>
+        </View>
+      )}
       {category === 99 && (
         <View style={styles.category}>
           <Entypo

@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "/Users/guyotjulie/LeReacteur/happy-cow/happy-cow-frontend/assets/happycow-firstPage.jpgƒ",
+      "image": "/Users/guyotjulie/LeReacteur/happy-cow/happy-cow-frontend/assets/happycow-firstPage.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

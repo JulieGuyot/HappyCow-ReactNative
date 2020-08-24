@@ -26,6 +26,7 @@ const Stack = createStackNavigator();
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
+  const [favorite, setFavorite] = useState([]);
   useEffect(() => {
     setIsLoading(false);
   }, []);
@@ -58,8 +59,15 @@ export default function App() {
                   name="restaurantsScreen"
                   options={{ header: () => null, animationEnabled: false }}
                 >
-                  {() => <RestaurantsScreen data={restaurants} />}
+                  {() => (
+                    <RestaurantsScreen
+                      data={restaurants}
+                      favorite={favorite}
+                      setFavorite={setFavorite}
+                    />
+                  )}
                 </Stack.Screen>
+
                 <Stack.Screen name="restaurant">
                   {() => <RestaurantScreen data={restaurants} />}
                 </Stack.Screen>
@@ -75,16 +83,7 @@ export default function App() {
               ),
             }}
           >
-            {() => (
-              <Stack.Navigator>
-                <Stack.Screen
-                  name="TabFavoris"
-                  options={{ title: "Profile", tabBarLabel: "Profile" }}
-                >
-                  {() => <FavoritesScreen />}
-                </Stack.Screen>
-              </Stack.Navigator>
-            )}
+            {() => <FavoritesScreen />}
           </Tab.Screen>
           <Tab.Screen
             name="Map"
@@ -104,7 +103,7 @@ export default function App() {
                     tabBarLabel: "Map",
                   }}
                 >
-                  {() => <Map />}
+                  {() => <MapScreen data={restaurants} />}
                 </Stack.Screen>
               </Stack.Navigator>
             )}

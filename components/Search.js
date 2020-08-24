@@ -3,20 +3,17 @@ import { View, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { EvilIcons } from "@expo/vector-icons";
 
 const Search = () => {
   const [around, setAround] = useState("");
   return (
     <View style={styles.searchSection}>
-      <FontAwesome5
-        style={styles.compass}
-        name="compass"
-        size={24}
-        color="grey"
-      />
+      <EvilIcons style={styles.search} name="search" size={24} color="grey" />
+
       <TextInput
         style={styles.headerInput}
-        placeholder="A proximité"
+        placeholder="Rechercher un restaurant"
         placeholderTextColor="grey"
         onChangeText={(text) => {
           setAround(text);
@@ -40,7 +37,7 @@ const styles = StyleSheet.create({
   headerInput: {
     backgroundColor: "white",
   },
-  compass: {
+  search: {
     marginRight: 6,
   },
 });
