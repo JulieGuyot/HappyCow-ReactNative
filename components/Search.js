@@ -5,18 +5,16 @@ import { TextInput } from "react-native-gesture-handler";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 
-const Search = () => {
-  const [around, setAround] = useState("");
+const Search = ({ search, setSearch }) => {
   return (
     <View style={styles.searchSection}>
       <EvilIcons style={styles.search} name="search" size={24} color="grey" />
-
       <TextInput
         style={styles.headerInput}
         placeholder="Rechercher un restaurant"
         placeholderTextColor="grey"
         onChangeText={(text) => {
-          setAround(text);
+          setSearch(text);
         }}
       />
     </View>

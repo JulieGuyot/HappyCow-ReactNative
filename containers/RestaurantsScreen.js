@@ -19,17 +19,16 @@ import { Ionicons } from "@expo/vector-icons";
 import Filters from "../components/Filters";
 
 const Restaurants = ({ data }) => {
-  // console.log(data[0].category);
   let favoris = [];
   const navigation = useNavigation();
   const [category, setCategory] = useState(null);
   const [filters, setFilters] = useState(false);
+  const [search, setSearch] = useState("");
 
-  const filter = (category) => {
+  const filter = (category, search) => {
     let tab = [];
     if (category === 0) {
       for (let i = 0; i < data.length; i++) {
-        // console.log(data[i].category);
         if (
           data[i].category === category ||
           data[i].category === category + 11
@@ -46,6 +45,13 @@ const Restaurants = ({ data }) => {
         }
       }
       return tab;
+    } else if (search) {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].name === search) {
+          tab.push(data[i]);
+        }
+      }
+      return tab;
     } else {
       return data;
     }
@@ -55,7 +61,7 @@ const Restaurants = ({ data }) => {
     <View>
       <View style={styles.header}>
         <Text style={styles.title}> {"HappyCow"}</Text>
-        <Search />
+        <Search search={search} setSearch={setSearch} />
       </View>
 
       {filters === false ? (
@@ -123,7 +129,7 @@ const Restaurants = ({ data }) => {
             <Text style={styles.removeFiltersText}>Effacer les filtres</Text>
           </TouchableOpacity>
           <FlatList
-            data={filter(category)}
+            data={filter(category, search)}
             keyExtractor={(item) => {
               return String(item.placeId);
             }}
